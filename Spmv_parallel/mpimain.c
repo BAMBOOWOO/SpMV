@@ -100,19 +100,21 @@ int main(int argc, char** argv) {
     unsigned int *local_col = (unsigned int*) malloc(sizeof(unsigned int) * workload);
     unsigned int *local_row = (unsigned int*) malloc(sizeof(unsigned int) * workload);
     double *local_val = (double*) malloc(sizeof(double) * workload);
-    
+    double start_time, end_time, elapsed_time;
     if (rank==0) {
         fprintf(stdout, "Calculating COO SpMV MPI... ");
     }
     start_t = ReadTSC();
-    for (int i=0; i<num_procs; i++) {
-        scount[i] = nnz/num_procs;
-        if (remain > 0) {
-            scount[i]++;
-            remain--;
+    if (rank == 0) {
+        for (int i=0; i<num_procs; i++) {
+            scount[i] = nnz/num_procs;
+            if (remain > 0) {
+                scount[i]++;
+                remain--;
+            }
+            displa[i] = sum;
+            sum += scount[i];
         }
-        displa[i] = sum;
-        sum += scount[i];
     }
     
     MPI_SAFE_CALL(MPI_Scatterv(col_ind, scount, displa, MPI_INT, local_col, workload, MPI_INT, 0, MPI_COMM_WORLD));
@@ -152,23 +154,19 @@ int main(int argc, char** argv) {
     
     if (rank == 0) fprintf(stdout, "Calculating CSR SpMV MPI... ");
     start_t = ReadTSC();
-    for (int i=0; i<num_procs; i++) {
-        csrscount[i] = (m)/num_procs;
-        gcsrscount[i] = (m)/num_procs;
-        if (sremain > 0) {
+    if (rank == 0) {
+        for (int i=0; i<num_procs; i++) {
+            csrscount[i] = (m)/num_procs;
+            if (sremain > 0) {
+                csrscount[i]++;
+                sremain--;
+            }
+
+            csrdispla[i] = ssum;
+            ssum += csrscount[i];
             csrscount[i]++;
-            gcsrscount[i]++;
-            sremain--;
-        }
-        
-        csrdispla[i] = ssum;
-        gcsrdispla[i] = gsum;
-        gsum += gcsrscount[i];
-        ssum += csrscount[i];
-        csrscount[i]++;
     }
-    
-    
+    }
     
     MPI_SAFE_CALL(MPI_Bcast(csr_col_ind, nnz, MPI_INT, 0, MPI_COMM_WORLD));
     MPI_SAFE_CALL(MPI_Scatterv(csr_row_ptr, csrscount, csrdispla, MPI_INT, cslocal_row, sworkload, MPI_INT, 0, MPI_COMM_WORLD));
