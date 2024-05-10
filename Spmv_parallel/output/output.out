@@ -1,0 +1,97 @@
+number of process: 4
+-----------------------------------------------------
+Matrix name:     cant/cant.mtx
+Matrix size:     62451 x 62451 => 2034917
+-----------------------------------------------------
+Is matrix:       1
+Is sparse:       1
+-----------------------------------------------------
+Is complex:      0
+Is real:         1
+Is integer:      0
+Is pattern only: 0
+-----------------------------------------------------
+Is general:      0
+Is symmetric:    1
+Is skewed:       0
+Is hermitian:    0
+-----------------------------------------------------
+Matrix name:     cant/cant.mtx
+Matrix size:     62451 x 62451 => 2034917
+-----------------------------------------------------
+Is matrix:       1
+Is sparse:       1
+-----------------------------------------------------
+Is complex:      0
+Is real:         1
+Is integer:      0
+Is pattern only: 0
+-----------------------------------------------------
+Is general:      0
+Is symmetric:    1
+Is skewed:       0
+Is hermitian:    0
+-----------------------------------------------------
+Matrix name:     cant/cant.mtx
+Matrix size:     62451 x 62451 => 2034917
+-----------------------------------------------------
+Is matrix:       1
+Is sparse:       1
+-----------------------------------------------------
+Is complex:      0
+Is real:         1
+Is integer:      0
+Is pattern only: 0
+-----------------------------------------------------
+Is general:      0
+Is symmetric:    1
+Is skewed:       0
+Is hermitian:    0
+-----------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
+-----------------------------------------------------
+Matrix name:     cant/cant.mtx
+Matrix size:     62451 x 62451 => 2034917
+-----------------------------------------------------
+Is matrix:       1
+Is sparse:       1
+-----------------------------------------------------
+Is complex:      0
+Is real:         1
+Is integer:      0
+Is pattern only: 0
+-----------------------------------------------------
+Is general:      0
+Is symmetric:    1
+Is skewed:       0
+Is hermitian:    0
+-----------------------------------------------------
+Matrix file name: cant/cant.mtx ... file loaded.
+Matrix file name: cant/cant.mtx ... file loaded.
+Matrix file name: cant/cant.mtx ... file loaded.
+Expanding symmetric matrix ... done
+  Total # of non-zeros is 4007383
+Expanding symmetric matrix ... done
+  Total # of non-zeros is 4007383
+Expanding symmetric matrix ... done
+  Total # of non-zeros is 4007383
+Matrix file name: cant/cant.mtx ... file loaded.
+Converting COO to CSR...done
+Converting COO to CSR...done
+Converting COO to CSR...done
+Expanding symmetric matrix ... done
+  Total # of non-zeros is 4007383
+Vector file name: cant/b.mtx ... file loaded
+Vector file name: cant/b.mtx ... file loaded
+Vector file name: cant/b.mtx ... file loaded
+Converting COO to CSR...done
+Vector file name: cant/b.mtx ... file loaded
+Calculating COO SpMV MPI... Time: 0.205989
+done
+Result file name: ./myans.mtx ... file saved
+Calculating CSR SpMV MPI... Time: 0.130429
+done
+Result file name: ./myans.mtx ... file saved
+Result file name: ./myans.mtx ... file saved
+Result file name: ./myans.mtx ... file saved
